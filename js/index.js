@@ -28,3 +28,13 @@ impatientBus.addEventListener('load', e => {
     impatientBus.src = '../img/impatient-bus.jpg';
   }, 10000);
 })
+
+const focusLinks = document.querySelectorAll('.nav-link');
+focusLinks.forEach(link => {
+  link.addEventListener('focus', e=> {
+    link.classList.toggle('textshadow');
+  })
+  link.addEventListener('blur', e=> {
+    link.classList.toggle('textshadow');
+  })
+})
