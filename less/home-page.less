@@ -106,8 +106,50 @@
         margin: 0 auto 30px;
       }
       
-      .btn {
+      button {
         .button-creator(200px, 45px, @button-bg, @white, 1.8rem);     
+      }
+    }
+  }
+
+  .book-vacation {
+    width: 100%;
+    padding: 30px 0;
+
+    .contact {
+      fieldset {
+        width: 100%;
+      }
+      
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"],
+      input[type="url"],
+      select,
+      textarea {
+        width: 100%;
+        background: white;
+        margin: 10px 0 5px;
+        padding: 10px;
+        font-size: 1.6rem;
+      }
+
+      select {
+        height: 50px;
+        color: black;
+      }
+
+      textarea {
+        height: 100px;
+      }
+
+      button {
+        margin-top: 15px;
+        .button-creator(200px, 45px, @button-bg, @white, 1.8rem);
+
+        @media @mobile {
+          width: 100%;
+        }
       }
     }
   }

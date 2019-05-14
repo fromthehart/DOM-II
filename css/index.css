@@ -326,7 +326,7 @@ img {
     margin: 0 auto 30px;
   }
 }
-.home .content-pick .destination .btn {
+.home .content-pick .destination button {
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
   border-radius: 15px;
@@ -342,11 +342,78 @@ img {
   font-size: 1.8rem;
 }
 @media (max-width: 500px) {
-  .home .content-pick .destination .btn {
+  .home .content-pick .destination button {
     width: 100%;
   }
 }
-.home .content-pick .destination .btn:hover {
+.home .content-pick .destination button:hover {
   background: #FFFFFF;
   color: #17A2B8;
+}
+.home .book-vacation {
+  width: 100%;
+  padding: 30px 0;
+}
+.home .book-vacation .contact fieldset {
+  width: 100%;
+}
+.home .book-vacation .contact input[type="text"],
+.home .book-vacation .contact input[type="email"],
+.home .book-vacation .contact input[type="tel"],
+.home .book-vacation .contact input[type="url"],
+.home .book-vacation .contact select,
+.home .book-vacation .contact textarea {
+  width: 100%;
+  background: white;
+  margin: 10px 0 5px;
+  padding: 10px;
+  font-size: 1.6rem;
+}
+.home .book-vacation .contact select {
+  height: 50px;
+  color: black;
+}
+.home .book-vacation .contact textarea {
+  height: 100px;
+}
+.home .book-vacation .contact button {
+  margin-top: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 45px;
+  background-color: #17A2B8;
+  color: #FFFFFF;
+  border: 1px solid #C0C0C0;
+  cursor: pointer;
+  font-size: 1.8rem;
+}
+@media (max-width: 500px) {
+  .home .book-vacation .contact button {
+    width: 100%;
+  }
+}
+.home .book-vacation .contact button:hover {
+  background: #FFFFFF;
+  color: #17A2B8;
+}
+@media (max-width: 500px) {
+  .home .book-vacation .contact button {
+    width: 100%;
+  }
+}
+.orange {
+  color: orange;
+}
+.angryred {
+  color: red;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.textshadow {
+  text-shadow: 1px 1px 2px black;
 }
