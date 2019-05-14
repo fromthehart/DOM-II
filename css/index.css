@@ -326,7 +326,7 @@ img {
     margin: 0 auto 30px;
   }
 }
-.home .content-pick .destination .btn {
+.home .content-pick .destination button {
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
   border-radius: 15px;
@@ -342,11 +342,11 @@ img {
   font-size: 1.8rem;
 }
 @media (max-width: 500px) {
-  .home .content-pick .destination .btn {
+  .home .content-pick .destination button {
     width: 100%;
   }
 }
-.home .content-pick .destination .btn:hover {
+.home .content-pick .destination button:hover {
   background: #FFFFFF;
   color: #17A2B8;
 }

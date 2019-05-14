@@ -1,6 +1,7 @@
-// Return a random number from 0 to max
-const randomIndex = (max) => {
-  return Math.floor(Math.random() * max);
+// Return a random color from among several
+const randomColor = () => {
+  const color = ['red', 'green', 'purple', 'orange'][Math.floor(Math.random() * 4)];
+  return color;
 }
 
 // Change H1 color on mouseover / mouseleave
@@ -17,7 +18,7 @@ funHeaders.forEach(h2 => {
 // Change H1 color to a random color when wheeled over
 const funnestHeader = document.querySelector('h1');
 funnestHeader.addEventListener('wheel', e => {
-  funnestHeader.style.color = ['red', 'green', 'purple', 'orange'][randomIndex(4)];
+  funnestHeader.style.color = randomColor();
 })
 
 // Our bus is ready to go. If you don't board now, it'll leave without you!
@@ -107,14 +108,14 @@ class FunKeys {
       console.log('Turning fun on!');
 
       this.clearId = window.setInterval(() => {
-        const randomColor = ['red', 'green', 'purple', 'orange'][Math.floor(Math.random() * 4)];
+        const randomHue = randomColor();
         const randomPara = allParas[Math.floor(Math.random() * (allParas.length))];
         const randomWords = randomPara.innerHTML.split(' ');
         let randomWord = randomWords[Math.floor(Math.random() * (randomWords.length))];
         while (randomWord.includes('span') || randomWord.includes('style') || randomWord.includes('class')) {
           randomWord = randomWords[Math.floor(Math.random() * (randomWords.length))];
         }        
-        randomPara.innerHTML = randomPara.innerHTML.replace(randomWord, ` <span style="color:${randomColor}">${randomWord}</span> `);
+        randomPara.innerHTML = randomPara.innerHTML.replace(randomWord, ` <span style="color:${randomHue}">${randomWord}</span> `);
       }, 5);
     } else {
       this.fun = false;
@@ -158,3 +159,21 @@ document.addEventListener("dragend", e => {
   e.target.style.opacity = '';
   e.target.style.border = '';
 });
+
+// stopPropagation example. Only applies to the first button to show how it works
+// compared to allowing the click to bubble
+const divs = document.querySelectorAll('.container div');
+divs.forEach(text => {
+  console.log(text);
+  text.addEventListener('click', e => {
+    text.style.background = randomColor();
+    window.setTimeout(() => {
+      text.style.background = 'white';
+    }, 5000)
+  })
+})
+
+const firstButton = document.querySelector('button');
+firstButton.addEventListener('click', e => {
+  e.stopPropagation();
+})
