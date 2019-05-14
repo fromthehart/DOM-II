@@ -16,7 +16,7 @@ funHeaders.forEach(h2 => {
 
 // Change H1 color to a random color when wheeled over
 const funnestHeader = document.querySelector('h1');
-funnestHeader.addEventListener('wheel', e=> {
+funnestHeader.addEventListener('wheel', e => {
   funnestHeader.style.color = ['red', 'green', 'purple', 'orange'][randomIndex(4)];
 })
 
@@ -31,16 +31,22 @@ impatientBus.addEventListener('load', e => {
   }, 10000);
 })
 
-const focusLinks = document.querySelectorAll('.nav-link');
+// Text shadow on link focus, also disable following of links
+const focusLinks = document.querySelectorAll('a');
 focusLinks.forEach(link => {
-  link.addEventListener('focus', e=> {
+  link.addEventListener('focus', e => {
     link.classList.toggle('textshadow');
   })
-  link.addEventListener('blur', e=> {
+  link.addEventListener('blur', e => {
     link.classList.toggle('textshadow');
+  })
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    e.stopPropagation();
   })
 })
 
+// No refunds
 const trollText = document.querySelectorAll('textarea');
 trollText.forEach(textBox => {
   textBox.addEventListener('select', e => {
@@ -48,11 +54,12 @@ trollText.forEach(textBox => {
   })
 })
 
+// Get angry if the window is resized
 const backupParas = [];
 const allParas = document.querySelectorAll('p');
 allParas.forEach(para => backupParas.push(para.innerHTML));
 
-window.addEventListener('resize', e=> {
+window.addEventListener('resize', e => {
   allParas.forEach(para => para.innerHTML = "<span class='angryred'>Whoa whoa whoa... hold up, pardner. Extensive user testing showed that this text box is most effective at your previous window size. Clearly you didn't graduate from Lambda School's excellent UX program. Might we suggest you sign up?</span>");
   window.setTimeout(() => {
     allParas.forEach((para, index) => para.innerHTML = backupParas[index]);
