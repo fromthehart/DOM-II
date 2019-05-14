@@ -24,7 +24,6 @@ funnestHeader.addEventListener('wheel', e=> {
 const impatientBus = document.querySelector('header img');
 impatientBus.addEventListener('load', e => {
   window.setTimeout(() => {
-    console.log('got here');
     impatientBus.src = '../img/impatient-bus.jpg';
     impatientBus.addEventListener('dblclick', e => {
       impatientBus.src = '../img/fun-bus-returns.jpg';
@@ -39,5 +38,12 @@ focusLinks.forEach(link => {
   })
   link.addEventListener('blur', e=> {
     link.classList.toggle('textshadow');
+  })
+})
+
+const trollText = document.querySelectorAll('textarea');
+trollText.forEach(textBox => {
+  textBox.addEventListener('select', e => {
+    textBox.textContent = "Haha just kidding. No refunds whatsoever 😜";  
   })
 })

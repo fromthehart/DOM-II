@@ -91,7 +91,35 @@
         <div class="btn">Sign Me Up!</div>
       </div>
     </section>
-  </div><!-- container -->
+
+    <section class="book-vacation">
+        <a name="contact"><h2>Choose Your Adventure</h2></a>
+        <form class="contact" method="post" action="https://formspree.io/fromthehart@pm.me">
+          <fieldset>
+              <select name="destination" tabindex="1" >
+                  <option value="capetown">Cape Town, South Africa</option>
+                  <option value="chalan">Chalan Kanoa, Northern Mariana Islands, US</option>
+                  <option value="zakopane">Zakopane, Poland</option>
+                  <option value="mumbai">Mumbai, India</option>
+                </select>
+          </fieldset>
+          <fieldset>
+            <input name="name" placeholder="Name" type="text" tabindex="2" required >
+          </fieldset>
+          <fieldset>
+            <input name="email" placeholder="E-mail" type="email" tabindex="3" required>
+          </fieldset>
+          <fieldset>
+            <input name="phone" placeholder="Phone number" type="tel" tabindex="4">
+          </fieldset>
+          <fieldset>
+            <textarea name="message" tabindex="5" required>Very important legal disclaimer. Be sure you copy and save this: Should you fail to have fun on the Fun Bus, we'll refund you 150% of your purchase.</textarea>
+          </fieldset>
+          <fieldset>
+            <button type="submit" id="contact-submit" tabindex="6" data-submit="...Sending">Submit</button>
+          </fieldset>
+        </form>
+    </section>
 
   <footer class="footer">
     <p>Copyright Fun Bus 2018</p>
