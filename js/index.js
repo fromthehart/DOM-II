@@ -22,14 +22,24 @@ funnestHeader.addEventListener('wheel', e => {
 
 // Our bus is ready to go. If you don't board now, it'll leave without you!
 const impatientBus = document.querySelector('header img');
-impatientBus.addEventListener('load', e => {
+impatientBus.addEventListener('load', busHandler);
+
+function busHandler(e) {
+  // Remove the original 'load' event so it isn't called again 
+  e.target.removeEventListener(e.type, arguments.callee);
+
   window.setTimeout(() => {
     impatientBus.src = './img/impatient-bus.jpg';
     impatientBus.addEventListener('dblclick', e => {
       impatientBus.src = './img/fun-bus-returns.jpg';
+      patientBus();
     })
   }, 10000);
-})
+}
+
+function patientBus() {
+  impatientBus.removeEventListener('load', e => {});
+}
 
 // Text shadow on link focus, also disable following of links
 const focusLinks = document.querySelectorAll('a');
@@ -133,4 +143,18 @@ body.addEventListener('keypress', e => {
       funPress.nPressed();
       break;
   }
+});
+
+// Sections have been set to draggable in the HTML.
+// Set those and any other draggable elements to .5 opacity while dragging
+document.addEventListener("dragstart", e => {
+  // make it half transparent
+  e.target.style.opacity = .5;
+  e.target.style.border = '10px solid orange';
+});
+
+document.addEventListener("dragend", e => {
+  // reset the transparency
+  e.target.style.opacity = '';
+  e.target.style.border = '';
 });
