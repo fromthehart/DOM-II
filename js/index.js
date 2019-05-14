@@ -24,9 +24,9 @@ funnestHeader.addEventListener('wheel', e=> {
 const impatientBus = document.querySelector('header img');
 impatientBus.addEventListener('load', e => {
   window.setTimeout(() => {
-    impatientBus.src = '../img/impatient-bus.jpg';
+    impatientBus.src = './img/impatient-bus.jpg';
     impatientBus.addEventListener('dblclick', e => {
-      impatientBus.src = '../img/fun-bus-returns.jpg';
+      impatientBus.src = './img/fun-bus-returns.jpg';
     })
   }, 10000);
 })
@@ -46,4 +46,15 @@ trollText.forEach(textBox => {
   textBox.addEventListener('select', e => {
     textBox.textContent = "Haha just kidding. No refunds whatsoever 😜";  
   })
+})
+
+const backupParas = [];
+const allParas = document.querySelectorAll('p');
+allParas.forEach(para => backupParas.push(para.innerHTML));
+
+window.addEventListener('resize', e=> {
+  allParas.forEach(para => para.innerHTML = "<span class='angryred'>Whoa whoa whoa... hold up, pardner. Extensive user testing showed that this text box is most effective at your previous window size. Clearly you didn't graduate from Lambda School's excellent UX program. Might we suggest you sign up?</span>");
+  window.setTimeout(() => {
+    allParas.forEach((para, index) => para.innerHTML = backupParas[index]);
+  }, 5000);
 })
