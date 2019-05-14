@@ -65,3 +65,72 @@ window.addEventListener('resize', e => {
     allParas.forEach((para, index) => para.innerHTML = backupParas[index]);
   }, 5000);
 })
+
+// Wait for the user to type 'fun', then have fun with text colors. Typing fun again turns it off.
+class FunKeys {
+  constructor() {
+    this.f = this.u = this.n = this.fun = false;
+    this.clearId = 0;
+    this.randomWord = '';
+  }
+
+  fPressed() {
+    this.f = true;
+  }
+
+  uPressed() {
+    if (this.f) {
+      this.u = true;
+    }
+  }
+
+  nPressed() {
+    if (this.u) {
+      this.n = true;
+      this.funStuff();
+    }
+  }
+
+  funStuff() {
+    if (!this.fun) {
+      this.fun = true;
+      console.log('Turning fun on!');
+
+      this.clearId = window.setInterval(() => {
+        const randomColor = ['red', 'green', 'purple', 'orange'][Math.floor(Math.random() * 4)];
+        const randomPara = allParas[Math.floor(Math.random() * (allParas.length))];
+        const randomWords = randomPara.innerHTML.split(' ');
+        let randomWord = randomWords[Math.floor(Math.random() * (randomWords.length))];
+        while (randomWord.includes('span') || randomWord.includes('style') || randomWord.includes('class')) {
+          randomWord = randomWords[Math.floor(Math.random() * (randomWords.length))];
+        }        
+        randomPara.innerHTML = randomPara.innerHTML.replace(randomWord, ` <span style="color:${randomColor}">${randomWord}</span> `);
+      }, 5);
+    } else {
+      this.fun = false;
+      clearInterval(this.clearId);
+      allParas.forEach((para, index) => {
+        para.innerHTML = backupParas[index];
+      })
+      console.log('Turning fun off!');
+    }
+  }
+}
+
+const funPress = new FunKeys();
+
+const body = document.querySelector('body');
+body.addEventListener('keypress', e => {
+  console.log(e.code);
+  switch (e.code) {
+    case 'KeyF':
+      funPress.fPressed();
+      break;
+    case 'KeyU':
+      funPress.uPressed();
+      break;
+    case 'KeyN':
+      funPress.nPressed();
+      break;
+  }
+});
